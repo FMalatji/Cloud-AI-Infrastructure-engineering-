@@ -1,4 +1,4 @@
-Langa Workspace - Sovereign AI Infrastructure
+Langa Workspace - EdTech AI Infrastructure
 Langa Workspace is an AI-native educational SaaS platform engineered to automate South African Department of Basic Education (DBE) CAPS-aligned lesson plans and assessments. Built as a decoupled microservices application on Google Cloud Platform (GCP), the platform combines a Next.js 14 presentation tier with a FastAPI containerized backend engine.
 This architecture integrates generative AI models and retrieval-augmented generation (RAG) while seamlessly enforcing domestic POPIA data residency across serverless cloud infrastructure.
 

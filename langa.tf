@@ -9,16 +9,16 @@ provider "google" {
 
 # 1. Zero-Trust Security: Service Account
 # Engineered for keyless impersonation, eliminating static JSON keys.
-resource "google_service_account" "langa_executor" {
-  account_id   = "langa-executor"
-  display_name = "Langa Workspace Zero-Trust Executor SA"
+resource "google_service_account" {
+  account_id   = "langa88888"
+  display_name = "Langa Workspace Zero-Trust"
 }
 
 # 2. Artifact Registry: Container Image Storage
 # Docker image repository storing compiled Next.js and FastAPI container images[cite: 4].
 resource "google_artifact_registry_repository" "docker_repo" {
   location      = "africa-south1"
-  repository_id = "langa-workspace-repo"
+  repository_id = "langa-repo"
   description   = "Docker image repository for Langa Workspace microservices"
   format        = "DOCKER"
 }
@@ -40,7 +40,7 @@ resource "google_cloud_run_v2_service" "backend" {
 
   template {
     # Injects the keyless service account at runtime[cite: 3, 4]
-    service_account = google_service_account.langa_executor.email
+    service_account = google_service_account.langa88888.email
     
     containers {
       image = "${google_artifact_registry_repository.docker_repo.location}-docker.pkg.dev/${var.project_id}/${google_artifact_registry_repository.docker_repo.repository_id}/backend:latest"
@@ -56,7 +56,7 @@ resource "google_cloud_run_v2_service" "backend" {
 
 # 5. Serverless Compute: Frontend Runtime (Next.js)
 resource "google_cloud_run_v2_service" "frontend" {
-  name     = "langa-frontend"
+  name     = "langa"
   location = "africa-south1"
 
   template {
@@ -90,7 +90,7 @@ resource "google_cloud_scheduler_job" "agent_nano" {
     
     # Secures the endpoint using the executor service account
     oidc_token {
-      service_account_email = google_service_account.langa_executor.email
+      service_account_email = google_service_account.langa88888888888888888.email
     }
   }
 }
